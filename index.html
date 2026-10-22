@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo for Dental Labs - 치과기공소 맞춤형 시스템</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                    },
+                    colors: {
+                        medical: {
+                            50: '#fdf8fb',
+                            100: '#f8ebf3',
+                            200: '#edd1e4',
+                            500: '#a26b94',
+                            600: '#714B67', // Odoo Purple
+                            700: '#5a3a52', 
+                            800: '#452a3f',
+                            900: '#321c2c', 
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '1', boxShadow: '0 0 15px rgba(113,75,103,0.6)' },
+                            '50%': { opacity: '.7', boxShadow: '0 0 5px rgba(113,75,103,0.2)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-medical-200 selection:text-medical-900">
+
+    <!-- 1. Top Alert Banner -->
+    <div class="bg-slate-900 text-white text-xs md:text-sm text-center py-2.5 px-4 font-medium z-[60] relative tracking-wide">
+        전 세계 1,200만 명 이상 사용, 구글(Alphabet)이 5,000억 원을 투자한 글로벌 No.1 자동화 시스템 <span class="font-bold text-medical-200 ml-1">Odoo</span>
+    </div>
+
+    <!-- 2. Header -->
+    <header class="sticky top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg" alt="Odoo" class="h-8 w-auto">
+                <span class="font-bold text-xs px-2.5 py-1 rounded-full bg-medical-50 text-medical-600 border border-medical-100 mt-1">for Dental</span>
+            </div>
+            <nav class="hidden md:flex gap-8 font-medium text-slate-600">
+                <a href="#workflow-pipeline" class="hover:text-medical-600 transition-colors">프로세스 워크플로우</a>
+                <a href="#about-odoo" class="hover:text-medical-600 transition-colors">Odoo 소개</a>
+                <a href="#detailed-features" class="hover:text-medical-600 transition-colors">상세 기능</a>
+                <a href="#contact" class="hover:text-medical-600 transition-colors">무료 진단 신청</a>
+            </nav>
+            <div>
+                <a href="#contact" class="bg-medical-600 text-white px-5 py-2.5 rounded-full font-bold shadow-md shadow-medical-600/20 hover:bg-medical-700 transition-all duration-200 text-sm">
+                    맞춤형 데모 시연
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. Hero Section -->
+    <section class="relative pt-20 pb-16 overflow-hidden hero-pattern text-center">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-white border border-slate-200 text-medical-600 font-bold text-sm mb-6 shadow-sm">
+                치과기공소 전용 End-to-End OS
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.3] mb-6">
+                기공소의 모든 작업을<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-600 to-purple-500">한 곳에서 관리하세요.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                수기 장부와 엑셀은 이제 그만. 접수부터 출고, 자재 현황, 월말 기공료 정산까지 한 번의 데이터 입력으로 완벽하게 자동화되는 치과기공소 전용 Odoo 시스템입니다.
+            </p>
+            <div class="animate-bounce mt-8 text-medical-500">
+                <a href="#workflow-pipeline"><i class="fa-solid fa-arrow-down text-2xl"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Visual Workflow Pipeline Section -->
+    <section id="workflow-pipeline" class="py-16 bg-white relative border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">단 하나의 막힘없는 자동화 흐름</h2>
+                <p class="text-slate-500">각 단계별 실제 업무와 이를 지원하는 Odoo 앱의 유기적 연결</p>
+            </div>
+
+            <div class="relative w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-4">
+                <div class="hidden md:block absolute top-[4.5rem] left-[10%] right-[10%] h-1 bg-slate-200 z-0 rounded-full"></div>
+                <div class="block md:hidden absolute top-[10%] bottom-[10%] left-1/2 w-1 -translate-x-1/2 bg-slate-200 z-0 rounded-full"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center group w-full md:w-1/5">
+                    <div class="relative w-36 h-36 rounded-full bg-white p-2 shadow-xl border border-slate-100 mb-5 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=400&auto=format&fit=crop" alt="Digital Prescription" class="w-full h-full rounded-full object-cover">
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-xl shadow-lg border border-slate-100 p-1 flex items-center justify-center animate-pulse-glow">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/crm/static/description/icon.png" alt="CRM/Sales" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    <span class="text-xs font-black text-medical-600 uppercase tracking-widest mb-1">Step 1</span>
+                    <h3 class="text-base font-bold text-slate-900 text-center">기공 의뢰서 디지털 접수</h3>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-center group w-full md:w-1/5">
+                    <div class="relative w-36 h-36 rounded-full bg-white p-2 shadow-xl border border-slate-100 mb-5 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&auto=format&fit=crop" alt="Milling Production" class="w-full h-full rounded-full object-cover">
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-xl shadow-lg border border-slate-100 p-1 flex items-center justify-center animate-pulse-glow" style="animation-delay: 0.5s;">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/mrp/static/description/icon.png" alt="MRP" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    <span class="text-xs font-black text-medical-600 uppercase tracking-widest mb-1">Step 2</span>
+                    <h3 class="text-base font-bold text-slate-900 text-center">BOM 및 공정 지시</h3>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-center group w-full md:w-1/5">
+                    <div class="relative w-36 h-36 rounded-full bg-white p-2 shadow-xl border border-slate-100 mb-5 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Materials Inventory" class="w-full h-full rounded-full object-cover">
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-xl shadow-lg border border-slate-100 p-1 flex items-center justify-center animate-pulse-glow" style="animation-delay: 1s;">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/stock/static/description/icon.png" alt="Inventory" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    <span class="text-xs font-black text-medical-600 uppercase tracking-widest mb-1">Step 3</span>
+                    <h3 class="text-base font-bold text-slate-900 text-center">자재 재고 연동</h3>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 flex flex-col items-center group w-full md:w-1/5">
+                    <div class="relative w-36 h-36 rounded-full bg-white p-2 shadow-xl border border-slate-100 mb-5 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Delivery Logistics" class="w-full h-full rounded-full object-cover">
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-xl shadow-lg border border-slate-100 p-1 flex items-center justify-center animate-pulse-glow" style="animation-delay: 1.5s; background-color: #374151;">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h4a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm9 0a1 1 0 011-1h2a1 1 0 011 1v16a1 1 0 01-1 1h-2a1 1 0 01-1-1V4zm7 0a1 1 0 011-1h1a1 1 0 011 1v16a1 1 0 01-1 1h-1a1 1 0 01-1-1V4z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="text-xs font-black text-medical-600 uppercase tracking-widest mb-1">Step 4</span>
+                    <h3 class="text-base font-bold text-slate-900 text-center">바코드 출고 배송</h3>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative z-10 flex flex-col items-center group w-full md:w-1/5">
+                    <div class="relative w-36 h-36 rounded-full bg-white p-2 shadow-xl border border-slate-100 mb-5 group-hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop" alt="Accounting Dashboard" class="w-full h-full rounded-full object-cover">
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-xl shadow-lg border border-slate-100 p-1 flex items-center justify-center animate-pulse-glow" style="animation-delay: 2s;">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/account/static/description/icon.png" alt="Invoicing" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    <span class="text-xs font-black text-medical-600 uppercase tracking-widest mb-1">Step 5</span>
+                    <h3 class="text-base font-bold text-slate-900 text-center">월말 자동 정산</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.5 About Odoo & Demo/Link -->
+    <section id="about-odoo" class="py-20 bg-medical-50 border-b border-slate-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2">
+                    <div class="inline-block bg-white text-medical-600 px-4 py-1.5 rounded-full text-xs font-black tracking-wide mb-5 border border-medical-200 shadow-sm">
+                        글로벌 No.1 비즈니스 소프트웨어
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-[1.3]">
+                        왜 전 세계 1,200만 사용자가<br>
+                        <span class="text-medical-600">Odoo를 선택</span>했을까요?
+                    </h2>
+                    <p class="text-slate-600 mb-4 text-base md:text-lg leading-relaxed">
+                        Odoo는 구글(Alphabet), 토요타, 현대자동차 등 글로벌 선도 기업부터 소규모 비즈니스까지 전 세계 1,200만 명 이상이 검증한 <strong>가장 압도적인 오픈소스 ERP 시스템</strong>입니다. 
+                    </p>
+                    <p class="text-slate-600 mb-8 text-base md:text-lg leading-relaxed">
+                        복잡한 코딩 없이 기공소에 필요한 앱(영업, 생산, 재고, 회계 등)만 레고 블록처럼 가볍게 연동하세요. 직관적이고 세련된 UI로 누구나 쉽게 사용할 수 있습니다.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.odoo.com/ko_KR" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center gap-2 bg-white border-2 border-medical-600 text-medical-600 font-bold px-7 py-3.5 rounded-xl hover:bg-medical-600 hover:text-white transition-all duration-300 shadow-sm">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg" alt="Odoo" class="h-4 w-auto brightness-0 invert-0 hover:invert filter transition-all">
+                            공식 한국어 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-sm ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual / Demo Representation -->
+                <div class="w-full lg:w-1/2 relative group">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-medical-200 to-medical-500 rounded-3xl blur-lg opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 cursor-pointer" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="Odoo ERP Dashboard" class="w-full h-auto object-cover opacity-90 group-hover:scale-105 transition-transform duration-700">
+                        
+                        <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors duration-300 flex items-center justify-center">
+                             <div class="w-20 h-20 bg-medical-600/90 rounded-full flex items-center justify-center text-white shadow-[0_0_30px_rgba(113,75,103,0.5)] group-hover:scale-110 transition-transform duration-300 backdrop-blur-md">
+                                <i class="fa-solid fa-play text-2xl ml-1"></i>
+                             </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-4 py-2 rounded-lg shadow-lg border border-slate-100 flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                            <span class="text-xs font-bold text-slate-700">Odoo 시스템 시연 영상 보기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Detailed Cards Section -->
+    <section id="detailed-features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">프로세스 단계별 상세 기능</h2>
+                <p class="text-slate-500 mt-3 max-w-2xl mx-auto">각 앱이 백그라운드에서 데이터를 공유하여 중복 입력과 휴먼 에러를 완벽하게 차단합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-medical-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200 shrink-0 shadow-sm">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/crm/static/description/icon.png" alt="CRM" class="w-10 h-10 object-contain">
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-medical-600 block mb-1">Step 1</span>
+                            <h3 class="text-lg font-bold text-slate-900">기공 의뢰서(Rx) 간편 접수</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Medit, 3Shape 등의 주문서 내역을 Odoo에 가볍고 빠르게 등록합니다. 무거운 3D 스캔 파일은 분리하고 필수 정보(치아 번호, 쉐이드, 납기일)만 입력하여 시스템 부하 없이 즉시 CAD/CAM 생산 지시서(MO)를 자동 생성합니다.
+                    </p>
+                    <div class="text-xs text-medical-600 font-semibold bg-medical-100/50 p-2 rounded-md border border-medical-100">
+                        ※ 사업 확장 시 추후 스캐너 API 연동 자동화 지원 가능
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-medical-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200 shrink-0 shadow-sm">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/mrp/static/description/icon.png" alt="MRP" class="w-10 h-10 object-contain">
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-medical-600 block mb-1">Step 2</span>
+                            <h3 class="text-lg font-bold text-slate-900">공정 바코드 스캔 추적</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        기공실 현장에서 태블릿이나 스마트폰으로 작업지시서 바코드를 스캔하여 공정을 이동시킵니다. 당일 긴급 건 우선 표시는 물론, 특정 보철물이 어느 기사의 책상에서 지연되고 있는지 실시간 파악해 납기 지연을 방지합니다.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-medical-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200 shrink-0 shadow-sm">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/stock/static/description/icon.png" alt="Stock" class="w-10 h-10 object-contain">
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-medical-600 block mb-1">Step 3</span>
+                            <h3 class="text-lg font-bold text-slate-900">고가 자재 재고 연동</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        생산 지시(BOM) 완료 시 지르코니아 블록, 골드(금 합금) 등 고가 자재의 로트(Lot) 번호와 소모량이 실시간으로 자동 차감됩니다. 설정해 둔 안전 재고 미달 시 벤더 발주서(PO)가 자동으로 생성되어 자재 부족 현상을 겪지 않습니다.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-medical-300 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="bg-slate-800 p-2.5 rounded-xl border border-slate-800 shrink-0 flex items-center justify-center w-12 h-12 shadow-sm">
+                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h4a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm9 0a1 1 0 011-1h2a1 1 0 011 1v16a1 1 0 01-1 1h-2a1 1 0 01-1-1V4zm7 0a1 1 0 011-1h1a1 1 0 011 1v16a1 1 0 01-1 1h-1a1 1 0 01-1-1V4z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-medical-600 block mb-1">Step 4</span>
+                            <h3 class="text-lg font-bold text-slate-900">기공물 출고 및 배송 관리</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        QC 검수가 완료된 기공물을 스캔하여 즉시 포장 및 출고 처리합니다. 배송 기사의 라우팅 테이블과 개별 거래명세서가 자동으로 생성되며, 원장님께 카카오톡/문자로 출고 완료 알림을 즉시 발송할 수 있습니다.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-medical-300 hover:shadow-lg transition-all duration-300 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200 shrink-0 shadow-sm">
+                            <img src="https://raw.githubusercontent.com/odoo/odoo/master/addons/account/static/description/icon.png" alt="Account" class="w-10 h-10 object-contain">
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-medical-600 block mb-1">Step 5</span>
+                            <h3 class="text-lg font-bold text-slate-900">치과별 월말 자동 정산</h3>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        한 달 동안 정상적으로 출고 완료된 데이터를 긁어와 각 치과별 전용 단가(수가표)가 자동 계산됩니다. 클릭 한 번으로 거래처별 월말 기공료 청구서와 홈택스 전자세금계산서를 일괄 발행하여 극심했던 정산 스트레스를 없앱니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Lead Capture CTA (Connected with your Formspree Endpoint) -->
+    <section id="contact" class="py-24 px-6 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-slate-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-medical-600 blur-[80px] opacity-30 rounded-full"></div>
+                
+                <!-- Left: Expert Profile & Hook -->
+                <div class="w-full md:w-1/2 p-10 md:p-12 text-white relative z-10 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-medical-500/20 border border-medical-500/40 text-medical-200 text-xs font-bold mb-4">
+                            <i class="fa-solid fa-user-check text-xs"></i> 치과 기공 전문 컨설턴트 직통 배정
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold mb-4 leading-snug">
+                            산업을 제대로 아는<br/>
+                            <span class="text-medical-200">전문가에게 시연 받으세요.</span>
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            단순 소프트웨어 세일즈가 아닙니다. 기공소 실무와 3D CAD/CAM 프로세스를 깊이 이해하는 전문가가 현재 기공소의 병목 현상을 진단하고 가장 현실적인 맞춤 워크플로우를 직접 시연해 드립니다.
+                        </p>
+                    </div>
+
+                    <!-- Business Analyst Profile Card -->
+                    <div class="bg-white/10 p-5 rounded-2xl border border-white/15 backdrop-blur-sm space-y-3 mt-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg" alt="Odoo" class="h-4 w-auto brightness-0 invert">
+                                <span class="text-xs font-bold text-white tracking-wide">Business Analyst</span>
+                            </div>
+                            <span class="text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                                1:1 진단
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <div class="text-sm font-bold text-white mb-0.5">Dental Software & AX / DX 전문 컨설턴트</div>
+                            <div class="text-xs text-slate-300">치과 소프트웨어 및 디지털 전환(AX/DX) 구축 전문</div>
+                        </div>
+
+                        <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2 text-slate-200">
+                                <i class="fa-solid fa-envelope text-medical-200"></i>
+                                <a href="mailto:phsan@odoo.com" class="font-mono hover:text-white hover:underline transition-colors font-medium">phsan@odoo.com</a>
+                            </div>
+                            <span class="text-[11px] text-slate-400">직통 문의 가능</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Lead Capture Form -->
+                <div class="w-full md:w-1/2 p-10 md:p-12 bg-white">
+                    <form action="https://formspree.io/f/xwlvgzkz" method="POST" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1.5">기공소명 <span class="text-red-500">*</span></label>
+                            <input type="text" name="Company" placeholder="예) 서울제일치과기공소" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-medical-500 focus:ring-1 focus:ring-medical-500 outline-none transition-all text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1.5">성함 (직급) <span class="text-red-500">*</span></label>
+                            <input type="text" name="Name" placeholder="예) 홍길동 소장" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-medical-500 focus:ring-1 focus:ring-medical-500 outline-none transition-all text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1.5">연락처 <span class="text-red-500">*</span></label>
+                            <input type="tel" name="Phone" placeholder="010-0000-0000" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-medical-500 focus:ring-1 focus:ring-medical-500 outline-none transition-all text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1.5">문의 내용 (선택)</label>
+                            <textarea name="Message" rows="3" placeholder="현재 겪고 계신 기공실 병목이나 궁금한 점을 편하게 남겨주세요." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-medical-500 focus:ring-1 focus:ring-medical-500 outline-none transition-all text-sm resize-none"></textarea>
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-medical-600 text-white font-bold py-3.5 rounded-lg hover:bg-medical-700 shadow-lg shadow-medical-600/30 transition-all duration-300 flex justify-center items-center gap-2">
+                                데모 시연 및 견적 요청 <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-10 text-center border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-center items-center gap-2 mb-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg" alt="Odoo" class="h-6 w-auto opacity-70 grayscale">
+            </div>
+            <p class="text-xs text-slate-500 mb-1">이 페이지는 치과기공소 맞춤형 워크플로우 진단을 위해 제공됩니다.</p>
+            <p class="text-xs text-slate-400">&copy; 2026 Odoo Dental Architecture. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
